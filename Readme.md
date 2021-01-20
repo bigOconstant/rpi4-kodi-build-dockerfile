@@ -4,7 +4,7 @@ This docker file is meant to build popocornmix's latest raspberry pi branch of k
 
 ## Build
 
-docker build -t kodi .
+`docker build -t kodi .`
 
 ## Get Executable off container
 
