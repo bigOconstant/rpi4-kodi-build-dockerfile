@@ -28,7 +28,8 @@ RUN make -C tools/depends/target/libspdlog PREFIX=/usr/local
 
 WORKDIR /kodi-build
 
-RUN cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=x11 -DAPP_RENDER_SYSTEM=gles -DENABLE_INTERNAL_FMT=ON -DENABLE_INTERNAL_FLATBUFFERS=ON -DENABLE_TESTING=OFF -DENABLE_INTERNAL_SPDLOG=ON
+RUN apt-get install libgbm-dev libinput-dev libxkbcommon-dev -y
+RUN cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=gbm -DAPP_RENDER_SYSTEM=gles -DENABLE_INTERNAL_FMT=ON -DENABLE_INTERNAL_FLATBUFFERS=ON -DENABLE_TESTING=OFF -DENABLE_INTERNAL_SPDLOG=ON
 
 RUN cp -r /usr/include/libdrm /usr/include/drm
 RUN cmake --build . -- VERBOSE=1 -j$(getconf _NPROCESSORS_ONLN)
